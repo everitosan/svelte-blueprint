@@ -12,7 +12,7 @@ Svelte-blueprint reads svelte files placed in a path known as **source** and the
 Install
 ---
 ```
-$ npm i git+https://github.com/everitosan/svelte-blueprint.git
+$ npm i https://github.com/everitosan/svelte-blueprint
 ```
 
 Svelte adapts
