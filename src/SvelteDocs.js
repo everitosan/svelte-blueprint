@@ -49,7 +49,7 @@ import Blueprint from '${this.template}'
 import ${component.name} from '${this.calculateRelative()}/${component.name}.svelte'
 </script>
     
-<Blueprint.svelte title='${component.name}' code="${component.example}" >
+<Blueprint title='${component.name}' code="${component.example}" >
     <p slot='description'>
         ${component.description}
     </p>
@@ -65,7 +65,7 @@ import ${component.name} from '${this.calculateRelative()}/${component.name}.sve
     <div slot='example' >
         ${component.example}
     </div>
-</Blueprint.svelte>
+</Blueprint>
         `;
         fs.writeFileSync(`${this.dst}/${component.name}.svelte`, data)
     }
