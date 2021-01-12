@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Documentator for svelete components",
   "main": "index.js",
+  "bin": {
+    "svelte-blueprint": "./cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "svelte compile -f iife templates/Blueprint.svelte > templates/Blueprint.js"
