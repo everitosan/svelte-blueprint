@@ -10,7 +10,7 @@ import Prism from 'svelte-prism'
 
 <style type='text/scss'>
 section :global(.tag:not(body)) {
-    background-color: hsl(0, 0%, 93%);
+    background-color: transparent;
 }
 </style>
 
