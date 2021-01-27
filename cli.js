@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const yargs = require('yargs')
 const fs = require('fs')
-const SvelteDocs = require('./src/SvelteDocs')
+const BluePrint = require('./src/BluePrint')
 
 
 let sourcePath='src/Components';
@@ -38,7 +38,7 @@ dstPath = dstPath + '/Pages'
 if(!fs.existsSync(sourcePath)) throw new Error(`The path ${sourcePath} does not exists`)
 if(!fs.existsSync(dstPath)) fs.mkdirSync(dstPath, {recursive: true})
 
-const sd = new SvelteDocs(sourcePath, dstPath)
+const sd = new BluePrint(sourcePath, dstPath)
 if(argv.template) sd.setTemplate(argv.template)
 
 // Create the first time

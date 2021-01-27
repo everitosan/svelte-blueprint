@@ -14,14 +14,32 @@ class Parser {
     }
 
     deconstuctProp(prop) {
+        const res = {}
         const dirtyNameVal = prop.split('let').pop().split('=')
         const [name, val] = dirtyNameVal.map(el => el.trim())
-        const res = {}
+        
         res.name = name
         if(val) {
-            res.default = val
-            res.type = typeof val
+            const nval = val.split('//')[0].trim()
+            // Check type of default
+            try {
+                res.type = typeof JSON.parse(nval)
+            }
+            catch {
+                res.type = typeof nval
+            }
+            // clean the default value
+            res.default = nval.replace(/'/gi,'')
         }
+
+        const description = prop.split('//')
+
+        if(description.length > 1) {
+            res.description = description.pop().trim()
+        } else {
+            res.description = ''
+        }
+
         return res
     }
 

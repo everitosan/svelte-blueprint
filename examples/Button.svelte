@@ -1,10 +1,16 @@
 <!--D Componente de botón -->
 <script>
-// Variable del texto en el botón
-export let text = 'Button'
+
+export let text = 'Button' // Variable del texto en el botón
+export let index = 5 // Número de botón
+export let data = {} 
 </script>
 
-<button class="button">{text}</button>
+<button class="button">
+    { index }
+    { text }
+    { data }
+</button>
 
 <!--E
 <Button  />

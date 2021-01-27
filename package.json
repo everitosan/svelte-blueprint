@@ -7,8 +7,7 @@
     "svelte-blueprint": "./cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "svelte compile -f iife templates/Blueprint.svelte > templates/Blueprint.js"
+    "test": "mocha tests"
   },
   "repository": {
     "type": "git",
@@ -27,5 +26,9 @@
     "svelte": "^3.31.2",
     "svelte-prism": "^1.1.3",
     "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
   }
 }

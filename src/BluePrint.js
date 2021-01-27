@@ -2,7 +2,7 @@ const fs = require('fs')
 const Parser = require('./Parser')
 
 
-class SvelteDocs {
+class BluePrint {
 
     constructor(source, dst='src/Docs') {
         this.source = source
@@ -74,4 +74,4 @@ import ${component.name} from '${this.calculateRelative()}/${component.name}.sve
 
 
 
-module.exports = SvelteDocs
+module.exports = BluePrint
