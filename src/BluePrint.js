@@ -58,7 +58,8 @@ import ${component.name} from '${this.calculateRelative()}/${component.name}.sve
             <tr>
                 <td>${props.name}</td>
                 <td>${props.type ? props.type: '-'}</td>
-                <td>${props.default? props.default: '-'}</td>
+                <td>${props.default ? props.default: '-'}</td>
+                <td>${props.description ? props.description: '-'}</td>
             </tr>
         `, '')}
     </tbody>

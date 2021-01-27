@@ -36,7 +36,7 @@ section :global(.tag:not(body)) {
                             <th>Name</th>
                             <th>Type</th>
                             <th>Default</th>
-                            <!-- <th>Description</th> -->
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <slot name='props'>
