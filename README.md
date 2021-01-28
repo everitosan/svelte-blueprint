@@ -7,6 +7,9 @@
 Svelte-blueprint reads svelte files placed in a path known as **source** and then creates svelte files based on a **template** in the **dst** path
 
 <br/>
+
+![example1](ex1.png)
+
 <br/>
 
 Install
