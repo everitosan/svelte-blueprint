@@ -1,3 +1,5 @@
+const { parsed } = require("yargs");
+
 const descRegex=/<!--D (.+) -->/;
 const exampleRegex=/<!--E((\n.*?)*)-->/;
 const propsRegex=/export let (.+)\n/g;
@@ -23,8 +25,9 @@ class Parser {
             const nval = val.split('//')[0].trim()
             // Check type of default
             try {
-                parsed = JSON.parse(nval)
-                res.type = parsed instanceof Array ? 'Array' : typeof parsed
+                const obj = JSON.parse(nval)
+                const isArray = obj instanceof Array
+                res.type = (isArray ? 'array' :  typeof obj)
             }
             catch {
                 res.type = typeof nval

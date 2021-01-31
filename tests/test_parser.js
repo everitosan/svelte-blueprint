@@ -26,6 +26,16 @@ describe('Check file parser',  () => {
         expect(parsed.props[2].type).to.equal('object')
         expect(parsed.props[2].default).to.equal('{}')
         expect(parsed.props[2].description).to.equal('')
+
+        expect(parsed.props[3].name).to.equal('options')
+        expect(parsed.props[3].type).to.equal('array')
+        expect(parsed.props[3].default).to.equal('[]')
+        expect(parsed.props[3].description).to.equal('')
+
+        expect(parsed.props[4].name).to.equal('shadow')
+        expect(parsed.props[4].type).to.equal(undefined)
+        expect(parsed.props[4].default).to.equal(undefined)
+        expect(parsed.props[4].description).to.equal('Sombra del componente')
     })
 
     it('should match example', () => {
