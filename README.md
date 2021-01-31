@@ -8,7 +8,7 @@ Svelte-blueprint reads svelte files placed in a path known as **source** and the
 
 <br/>
 
-![example1](ex1.png)
+![example1](https://github.com/everitosan/svelte-blueprint/blob/master/ex1.png)
 
 <br/>
 

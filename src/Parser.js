@@ -18,12 +18,13 @@ class Parser {
         const dirtyNameVal = prop.split('let').pop().split('=')
         const [name, val] = dirtyNameVal.map(el => el.trim())
         
-        res.name = name
+        res.name = name.split('//')[0].trim()
         if(val) {
             const nval = val.split('//')[0].trim()
             // Check type of default
             try {
-                res.type = typeof JSON.parse(nval)
+                parsed = JSON.parse(nval)
+                res.type = parsed instanceof Array ? 'Array' : typeof parsed
             }
             catch {
                 res.type = typeof nval
