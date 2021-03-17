@@ -1,7 +1,7 @@
 {
   "name": "svelte-blueprint",
-  "version": "1.0.2",
-  "description": "Documentator for svelete components",
+  "version": "1.0.4",
+  "description": "Create documentation of svelete components",
   "main": "index.js",
   "bin": {
     "svelte-blueprint": "./cli.js"

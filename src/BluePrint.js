@@ -53,7 +53,16 @@ import ${component.name} from '${this.calculateRelative()}/${component.name}.sve
     <p slot='description'>
         ${component.description}
     </p>
-    <tbody slot='props'>
+    <table slot='props'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
         ${ component.props.reduce((ac, props) =>`  ${ac}
             <tr>
                 <td>${props.name}</td>
@@ -62,7 +71,9 @@ import ${component.name} from '${this.calculateRelative()}/${component.name}.sve
                 <td>${props.description ? props.description: '-'}</td>
             </tr>
         `, '')}
-    </tbody>
+        </tbody>
+    </table>
+
     <div slot='example' >
         ${component.example}
     </div>

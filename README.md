@@ -15,7 +15,7 @@ Svelte-blueprint reads svelte files placed in a path known as **source** and the
 Install
 ---
 ```
-$ npm i https://github.com/everitosan/svelte-blueprint
+$ npm i -D svelte-blueprint
 ```
 
 Svelte adapts
@@ -36,11 +36,19 @@ The .svelte files inside **source** path should have extra comments.
     ```
 
 <br/>
-<br/>
+
 
 
 Generate blueprints
 ---
+To generate the blueprint files you can use a plugin for specific module bundlers or use the cli.
+
+### Plugins
+-  [Rollup](https://www.npmjs.com/package/rollup-plugin-svelte-blueprint)
+
+
+### Cli  
+
 Usage:
 ```bash
 $ svelte-blueprint
@@ -53,13 +61,32 @@ Options:
 |-s | --source |src/Components| Source path of components |[cadena de caracteres]
 |-d | --dst | Blueprints |Destination path for blueprints | [cadena de caracteres]
 |-w | --watch | false | Should watch for changes in source |[booleano]
-|-t | --template | svelte-blueprint/templates/Doc.svelte | Path of a template for the output page |[cadena de caracteres]  
+|-t | --template | svelte-blueprint/templates/Blueprint.svelte | Path of a template for the output page |[cadena de caracteres]  
   
 <br/>
 <br/>
 
 ## Templates
-By default, the genrated Blueprint file uses a Doc Component contained in this library, so if you need to use your own template this are the svelete *slots* you should implement:
+By default, the genrated Blueprint file uses a Blueprint Component contained in this library.
+
+You can customize the colors of that template or use your own template.
+
+These are the variables you may want to override to match your own style.
+
+```css
+ :global(:root) {
+    --svelte-blueprint-background: transparent;
+    --svelte-blueprint-color: #3e3e3e;
+    --svelte-blueprint-accent: #55c1ff;
+    --svelte-blueprint-table-border: #e7e7e7;
+    --svelte-blueprint-table-background: #fff;
+    --svelte-blueprint-table-hover: #eaeaea;
+    --svelte-blueprint-table-header-color: #fff;
+}
+```
+
+
+If you need to use your own template this are the svelete *slots* you should implement:
 ```html
 <slot name='description' > 
     Component description
