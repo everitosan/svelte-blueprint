@@ -39,6 +39,6 @@ describe('Check file parser',  () => {
     })
 
     it('should match example', () => {
-        expect(parsed.example).to.equal('\n<Button  />\n<Button text=\'One\' />\n<Button text=\'Two\' />\n<Button text=\'Three\' />\n ')
+        expect(parsed.example).to.equal('\n<Button  />\n<Button text=\"One\" />\n<Button text=\'Two\' />\n<Button text=\'Three\' />\n ')
     })
 })

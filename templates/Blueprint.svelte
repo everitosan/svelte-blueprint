@@ -81,7 +81,7 @@ import Prism from 'svelte-prism'
 
     .usage {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-gap: 20px;
     }
 
@@ -116,7 +116,7 @@ import Prism from 'svelte-prism'
         <h4>Usage</h4>
         <div class="usage" >
             <div>
-                <Prism language="html" source="{code}" />
+                <Prism language="html" source={code} />
             </div>
             <div class='example' >
                 <slot name='example'>
