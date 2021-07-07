@@ -20,7 +20,7 @@ class Parser {
         const dirtyNameVal = prop.split('let').pop().split('=')
         const [name, val] = dirtyNameVal.map(el => el.trim())
         
-        res.name = name.split('//')[0].trim()
+        res.name = name.split('//')[0].trim().split(":")[0].trim()
         if(val) {
             const nval = val.split('//')[0].trim()
             // Check type of default

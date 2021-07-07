@@ -1,6 +1,6 @@
 {
   "name": "svelte-blueprint",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Create documentation of svelete components",
   "main": "index.js",
   "bin": {

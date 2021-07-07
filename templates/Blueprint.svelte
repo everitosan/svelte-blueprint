@@ -21,6 +21,7 @@ import Prism from 'svelte-prism'
     }
     .svelte-blueprint {
         background-color: var(--svelte-blueprint-background);
+        border-bottom: 1px solid var(--svelte-blueprint-table-border);
         text-align: left;
         color: var(--svelte-blueprint-color);
         padding: 1em;
@@ -58,12 +59,17 @@ import Prism from 'svelte-prism'
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 34px;
+        text-align: right;
     }
 
     h2 {
         font-size: 18px;
         font-weight: 100;
+    }
+
+    .props {
+        margin-top: 2em;
     }
 
     .table {
@@ -81,7 +87,7 @@ import Prism from 'svelte-prism'
 
     .usage {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-gap: 20px;
     }
 
