@@ -122,7 +122,7 @@ import Prism from 'svelte-prism'
         <h4>Usage</h4>
         <div class="usage" >
             <div>
-                <Prism language="html" source="{code}" />
+                <Prism language="html" source={code} />
             </div>
             <div class='example' >
                 <slot name='example'>

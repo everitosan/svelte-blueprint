@@ -18,7 +18,7 @@ export let shadow // Sombra del componente
 
 <!--E
 <Button  />
-<Button text='One' />
+<Button text="One" />
 <Button text='Two' />
 <Button text='Three' />
  -->
