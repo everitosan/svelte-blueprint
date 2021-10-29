@@ -1,6 +1,8 @@
 # Svelte blueprint 🏗️
 
-##  Biuld svelte components documentation.
+##  Build svelte components documentation.
+
+> For spanish go [here](./README-es.md).
 
 <br/>
 
@@ -8,7 +10,7 @@ Svelte-blueprint reads svelte files placed in a path known as **source** and the
 
 <br/>
 
-![example1](https://github.com/everitosan/svelte-blueprint/blob/master/ex1.png)
+![example1](./img/ex1.png)
 
 <br/>
 
@@ -18,7 +20,7 @@ Install
 $ npm i -D svelte-blueprint
 ```
 
-Svelte adapts
+Svelte adjustments
 ---
 The .svelte files inside **source** path should have extra comments.
 
@@ -26,9 +28,13 @@ The .svelte files inside **source** path should have extra comments.
     ```html
     <!--D Description of the component -->
     ```
+- To add a description of a prop just add a single line comment next to it's definition.
+    ```js
+    export let name // Name string
+    ```
 
-
-- To set examples add:
+- To set usage example add:  
+    *If you need to add quote marks use **single ones ' '***
     ```html
     <!--E
         <Component  />
@@ -41,7 +47,7 @@ The .svelte files inside **source** path should have extra comments.
 
 Generate blueprints
 ---
-To generate the blueprint files you can use a plugin for specific module bundlers or use the cli.
+To generate the blueprint files you can use a **plugin** for specific module bundlers or use the cli.
 
 ### Plugins
 -  [Rollup](https://www.npmjs.com/package/rollup-plugin-svelte-blueprint)
@@ -56,12 +62,12 @@ $ svelte-blueprint
 Options:  
 |Short|Long|Default|Description| Type|
 |--|--|--|--|--|
-||--help||Muestra ayuda| [booleano]
-||--version || Muestra número de versión | [booleano]
-|-s | --source |src/Components| Source path of components |[cadena de caracteres]
-|-d | --dst | Blueprints |Destination path for blueprints | [cadena de caracteres]
-|-w | --watch | false | Should watch for changes in source |[booleano]
-|-t | --template | svelte-blueprint/templates/Blueprint.svelte | Path of a template for the output page |[cadena de caracteres]  
+||--help||Shows help| [bool]
+||--version || Shows the version | [bool]
+|-s | --source |src/Components| Source path of components |[string]
+|-d | --dst | Blueprints |Destination path for blueprints | [string]
+|-w | --watch | false | Should watch for changes in source |[bool]
+|-t | --template | svelte-blueprint/templates/Blueprint.svelte | Path of a template for the output page |[string]  
   
 <br/>
 <br/>
@@ -86,7 +92,7 @@ These are the variables you may want to override to match your own style.
 ```
 
 
-If you need to use your own template this are the svelete *slots* you should implement:
+If you need to use your own template this are the svelete *slots* you should define:
 ```html
 <slot name='description' > 
     Component description
@@ -104,6 +110,8 @@ Also you may want to use these props:
 title
 code
 ```
+
+For a better understanding, checkout the [default template](./templates/Blueprint.svelte)
 
 ## Guides
 - [Youtube](https://www.youtube.com/watch?v=Z-znFCs7Cuc&t=14s&ab_channel=evesan)
