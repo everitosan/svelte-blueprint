@@ -31,7 +31,12 @@ import Prism from 'svelte-prism'
         border-collapse: collapse;    
     }
 
-    .svelte-blueprint :global(table th, table td ) {
+    .svelte-blueprint :global(table th ) {
+        padding: 15px 10px;
+        cursor: pointer;
+    }
+
+    .svelte-blueprint :global(table td ) {
         padding: 15px 10px;
         cursor: pointer;
     }
