@@ -1,0 +1,73 @@
+<script>
+  import Blueprint from '{{template_path}}'
+  import {{component.name}} from '{{component_source}}/{{component.name}}.svelte'
+</script>
+    
+<Blueprint 
+    title='{{component.name}}'
+    code={`
+    {%- match component.example -%}
+    {%- when Some(example) -%}
+        {{example}}
+        {%- when None -%}
+        {%- endmatch -%}
+    `}
+    >
+    
+    <p slot='description'>
+        {%- match component.description -%}
+            {%- when Some(des) -%}
+             {{des}}
+            {%- when None -%}
+             No description
+        {%- endmatch -%}
+    </p>
+
+    {%- match component.props -%} {%- when Some(props) -%}
+        <table slot='props'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for prop in props %}
+                <tr>
+                    <td>{{ prop.name }}</td>
+                    <td>{{ prop.data_type }}</td>
+                    <td> 
+                        {%- match prop.default -%} {%- when Some(default) -%} {`${ {{default}} }`} {%- when None -%} - {%- endmatch -%}
+                    </td>
+                    <td>
+                        {%- match prop.description -%} {%- when Some(description) -%} {{description}} {%- when None -%} - {%- endmatch -%}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>    
+    {%- when None -%}
+        <p> No Props  </p>
+    {%- endmatch -%}
+
+    <ul slot='slots'>
+        {%- match component.slots -%} {%- when Some(slots) -%}
+            {% for slot in slots %} <li> {{ slot.name }} </li> {% endfor %}
+        {%- when None -%}
+            <li> No slots  </li>
+        {%- endmatch -%}
+    </ul>    
+
+ 
+    {%- match component.example -%}
+        {%- when Some(example) -%}
+            <div slot='example' > {{example}} </div>
+        {%- when None -%}
+            <p> No exmaple </p>
+{%- endmatch -%}
+
+</Blueprint>
+          

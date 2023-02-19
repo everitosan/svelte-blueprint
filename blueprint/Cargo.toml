@@ -1,0 +1,23 @@
+[package]
+name = "blueprint"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+regex = "1"
+lazy_static = "1.4.0"
+askama = "0.11.1"
+clap = { version = "4.1.6", features = ["derive"] }
+log = "0.4.17"
+simplelog = "0.12.0"
+
+
+[lib]
+name = "blueprintlib"
+crate-type = ["rlib", "cdylib"]
+
+[[bin]]
+name = "blueprint"
+path = "src/bin/cli.rs"
