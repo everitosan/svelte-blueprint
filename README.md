@@ -1,30 +1,31 @@
 # Svelte blueprint 🏗️
-
 ##  Build svelte components documentation.
-
-> For spanish go [here](./README-es.md).
-
-<br/>
-
-Svelte-blueprint reads svelte files placed in a path known as **source** and then creates svelte files based on a **template** in the **dst** path
+*Svelte-blueprint create documentation files for components based in comments in the source code.*
 
 <br/>
 
-![example1](./img/ex1.png)
+> ⚠️ For version 2.0.0 all `js` code has been migrated to `rust-lang`. 
+
+> 🗨️ For spanish go [here](./README-es.md).
+
 
 <br/>
 
-Install
----
+## Install
+
 ```
 $ npm i -D svelte-blueprint
 ```
+Example of output:
 
-Svelte adjustments
----
-The .svelte files inside **source** path should have extra comments.
+![example1](./img/example.png)
 
-- To set description add:
+
+## Creating a component ...
+
+Svelte component files should include some comments in order to generate a better documenation file.
+
+- A description for the comment can be included as:
     ```html
     <!--D Description of the component -->
     ```
@@ -42,31 +43,48 @@ The .svelte files inside **source** path should have extra comments.
 
 <br/>
 
+The tool can be used in a svelte project via `plugins` or `cli`.
+
+### 🔌 Plugins
+-  [Rollup](https://www.npmjs.com/package/rollup-plugin-svelte-blueprint) for svelte-blueprint < 2.0.0
+- [Vite](https://www.npmjs.com/package/vite-plugin-svelte-blueprint) for svelte-blueprint >= 2.0.0
 
 
-Generate blueprints
----
-To generate the blueprint files you can use a **plugin** for specific module bundlers or use the cli.
+### 🖥️ Cli  
 
-### Plugins
--  [Rollup](https://www.npmjs.com/package/rollup-plugin-svelte-blueprint)
+After the package is installed it can run via terminal client.
 
+**Usage**
 
-### Cli  
-
-Usage:
 ```bash
-$ svelte-blueprint
+$ ./node_modules/svelte-blueprint/blueprint/target/release/blueprint -h
+Usage: blueprint [OPTIONS] [COMMAND]
+
+Commands:
+  document  Create svelte documentation files
+  help      Print this message or the help of the given subcommand(s)
+
+Options:
+  -v, --verbose...  Turn debugging information on
+  -h, --help        Print help
+  -V, --version     Print version
 ```
-Options:  
-|Short|Long|Default|Description| Type|
-|--|--|--|--|--|
-||--help||Shows help| [bool]
-||--version || Shows the version | [bool]
-|-s | --source |src/Components| Source path of components |[string]
-|-d | --dst | Blueprints |Destination path for blueprints | [string]
-|-w | --watch | false | Should watch for changes in source |[bool]
-|-t | --template | svelte-blueprint/templates/Blueprint.svelte | Path of a template for the output page |[string]  
+
+**Command document**
+
+```bash
+$ ./node_modules/svelte-blueprint/blueprint/target/release/blueprint document -h
+Create svelte documentation files
+
+Usage: blueprint document [OPTIONS] --source <FILE> --destination <Directory>
+
+Options:
+  -s, --source <FILE>            Sets a source path
+  -d, --destination <Directory>  Sets a destination path
+  -t, --template <FILE>          Sets a template for the final component
+  -h, --help                     Print help
+
+```
   
 <br/>
 <br/>
@@ -99,6 +117,9 @@ If you need to use your own template this are the svelete *slots* you should def
 <slot name='props'>
     Component properties
 </slot>
+<slot name='slots'>
+    Component slots
+</slot>
 <slot name='example'>
     Component example
 </slot>
@@ -113,4 +134,4 @@ code
 For a better understanding, checkout the [default template](./templates/Blueprint.svelte)
 
 ## Guides
-- [Youtube](https://www.youtube.com/watch?v=Z-znFCs7Cuc&t=14s&ab_channel=evesan)
+- [Youtube](https://www.youtube.com/watch?v=Z-znFCs7Cuc&t=14s&ab_channel=evesan) for svelte-blueprint < 2.0.0
