@@ -39,7 +39,6 @@ impl SvelteComponent {
       None => { DEAULT_COMPONENT }
     };
 
-
     Ok(SvelteComponent {
       name: format!("{}", name), 
       description: description::parse(&content),
@@ -62,7 +61,7 @@ mod test_component {
   fn test_full_component() {
     let component = SvelteComponent::new(Path::new("tests/Table.svelte")).unwrap();
     assert_eq!(component.name, String::from("Table"));
-    assert_eq!(component.description, Some(String::from("Componente para tablas")));
+    assert_eq!(component.description, Some(String::from("Componente para tablas chidas")));
     assert_ne!(component.example, None);
   }
 }

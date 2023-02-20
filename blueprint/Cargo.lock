@@ -78,6 +78,7 @@ dependencies = [
  "askama",
  "clap",
  "lazy_static",
+ "libc",
  "log",
  "regex",
  "simplelog",

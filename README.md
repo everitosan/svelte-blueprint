@@ -33,8 +33,7 @@ The .svelte files inside **source** path should have extra comments.
     export let name // Name string
     ```
 
-- To set usage example add:  
-    *If you need to add quote marks use **single ones ' '***
+- To set usage example add:
     ```html
     <!--E
         <Component  />

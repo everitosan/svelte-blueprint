@@ -104,11 +104,17 @@ fn relative_path(from: &PathBuf, to: &PathBuf) -> BlueprintResult<PathBuf> {
         _ => {}
       };
     }
-    return Ok(result.join(to));
+    for c in to.components() {
+      match c {
+        Component::Normal(p) => {
+          result = result.join(p);
+        },
+        _ => {}
+      }
+    }
+    return Ok(result);
   }
 }
-
-
 
 
 #[cfg(test)]
@@ -135,7 +141,7 @@ mod test_blueprint {
     let source = PathBuf::from("tests/Table.svelte");
     let bp = Blueprint::new(params);
     let response = bp.parse(&source).unwrap();
-    let res_path = Path::new("./Docs/pages/aabb/Table.svelte").exists();
+    let res_path = Path::new("./Docs/pages/random/Table.svelte").exists();
 
     assert_eq!(response, ());
     assert!(res_path);

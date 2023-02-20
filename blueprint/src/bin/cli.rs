@@ -1,5 +1,5 @@
 use clap::{Parser, Subcommand};
-use log::{debug, error, info, warn};
+use log::{error, info, warn};
 use std::path::PathBuf;
 
 use blueprintlib::infra::log::init as init_log;
