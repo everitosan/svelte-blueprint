@@ -28,15 +28,12 @@ pub extern fn blueprint(source_libc:  *const libc::c_char, destination_libc:  *c
     template_path = Some(PathBuf::from(template_str));
   }
 
-  let params = modules::blueprint::DocumentParams {
+  let params = modules::blueprint::document::DocumentParams {
     template: &template_path,
     destination: &destination_path
   };
 
-  let bp = modules::blueprint::Blueprint::new(params);
+  modules::blueprint::process(&source_path, params);
 
-  match bp.parse(&source_path) {
-    Ok(_) => { return true },
-    Err(_) => { return false }
-  }
+  return true;
 }

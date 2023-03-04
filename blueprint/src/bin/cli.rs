@@ -1,9 +1,9 @@
 use clap::{Parser, Subcommand};
-use log::{error, info, warn};
+use log::{info, warn};
 use std::path::PathBuf;
 
 use blueprintlib::infra::log::init as init_log;
-use blueprintlib::modules::blueprint::{Blueprint, DocumentParams};
+use blueprintlib::modules::blueprint::{process, document::{DocumentParams}};
 
 #[derive(Subcommand)]
 enum Commands {
@@ -44,19 +44,12 @@ fn main() {
         warn!("Using template: {}", pb.to_str().unwrap());
       }
 
-      info!("Documenting file: {}", source.to_str().unwrap());      
       info!("Destination directory: {}", destination.to_str().unwrap());
 
       let params = DocumentParams { destination, template };
 
-      let blueprint = Blueprint::new(params);
+      process(source, params);
 
-      match blueprint.parse(source) {
-        Ok(_) => {},
-        Err(e) => { error!("{}", e);}
-      };
-
-      
   },
     None => {
       info!("No action performed")
