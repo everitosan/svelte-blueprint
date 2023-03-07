@@ -1,6 +1,8 @@
 use std::path::PathBuf;
 
 use std::ffi::{CStr};
+use std::ffi::CString;
+use libc::c_char;
 
 extern crate lazy_static;
 extern crate libc;
@@ -8,8 +10,9 @@ extern crate libc;
 pub mod modules;
 pub mod infra;
 
+
 #[no_mangle]
-pub extern fn blueprint(source_libc:  *const libc::c_char, destination_libc:  *const libc::c_char, template_libc:  *const libc::c_char) -> bool {  
+pub extern fn blueprint(source_libc:  *const libc::c_char, destination_libc:  *const libc::c_char, template_libc:  *const libc::c_char) -> *mut c_char  {  
 
   let source_str = unsafe { CStr::from_ptr(source_libc) };
   let source_str = source_str.to_str().unwrap();
@@ -33,7 +36,9 @@ pub extern fn blueprint(source_libc:  *const libc::c_char, destination_libc:  *c
     destination: &destination_path
   };
 
-  modules::blueprint::process(&source_path, params);
+  let paths = modules::blueprint::process(&source_path, params);
 
-  return true;
+  let result_string = paths.join("|");
+  CString::new(result_string).unwrap().into_raw()
+
 }

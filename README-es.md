@@ -1,40 +1,40 @@
 # Svelte blueprint 🏗️
-
-##  Construye documentación de tus componentes en svelte.
-
-> For english go [here](./README.md).
+##  Build svelte components documentation.
+*Svelte-blueprint create documentation files for components based in comments in the source code.*
 
 <br/>
 
-Svelte-blueprint revisa los componetes de svelte localizados en un path conocido como **source** y crea nuevos archivos basados en un **template** para colocarlos en el directorio **dst**.
+> ⚠️ For version 2.0.0 all `js` code has been migrated to `rust-lang`. 
+
+> 🗨️ For spanish go [here](./README-es.md).
+
 
 <br/>
 
-![example1](./img/ex1.png)
+## Install
 
-<br/>
-
-Instalción
----
 ```
 $ npm i -D svelte-blueprint
 ```
+Example of output:
 
-Ajustes en svelte
----
-Los archivos .svelte localizados en el directorio **source** deben agregar algunos comentarios.
+![example1](./img/example.png)
 
-- Para agregar una descripción del componente agrega al inicio:
+
+## Creating a component ...
+
+Svelte component files should include some comments in order to generate a better documenation file.
+
+- A description for the comment can be included as:
     ```html
     <!--D Description of the component -->
     ```
-- Para agregar una descripción a una propiedad del componente, inserta un comentario de una sola línea junto a la misma.
+- To add a description of a prop just add a single line comment next to it's definition.
     ```js
     export let name // Name string
     ```
 
-- Para agregar un ejemplo de uso del componente agrega:  
-    *Si requieres usar comillas, usa **comillas imples ' '***
+- To set usage example add:
     ```html
     <!--E
         <Component  />
@@ -43,42 +43,58 @@ Los archivos .svelte localizados en el directorio **source** deben agregar algun
 
 <br/>
 
+The tool can be used in a svelte project via `plugins` or `cli`.
+
+### 🔌 Plugins
+-  [Rollup](https://www.npmjs.com/package/rollup-plugin-svelte-blueprint) for svelte-blueprint < 2.0.0
+- [Vite](https://www.npmjs.com/package/vite-plugin-svelte-blueprint) for svelte-blueprint >= 2.0.0
 
 
-Generación de blueprints
----
-Para generar los archivos de coeumtnación, puedes usar un **plugin** para un bundler específico o usar el cli.
+### 🖥️ Cli  
 
-### Plugins
--  [Rollup](https://www.npmjs.com/package/rollup-plugin-svelte-blueprint)
+After the package is installed it can run via terminal client.
 
+**Usage**
 
-### Cli  
-
-Uso:
 ```bash
-$ svelte-blueprint
+$ ./node_modules/svelte-blueprint/blueprint/target/release/blueprint -h
+Usage: blueprint [OPTIONS] [COMMAND]
+
+Commands:
+  document  Create svelte documentation files
+  help      Print this message or the help of the given subcommand(s)
+
+Options:
+  -v, --verbose...  Turn debugging information on
+  -h, --help        Print help
+  -V, --version     Print version
 ```
-Options:  
-|Short|Long|Default|Descripción| Tipo|
-|--|--|--|--|--|
-||--help||Muestra ayuda| [booleano]
-||--version || Muestra número de versión | [booleano]
-|-s | --source |src/Components| Directorio fuente de los componentes |[cadena de caracteres]
-|-d | --dst | Blueprints | Direcotorio destino de los blueprints | [cadena de caracteres]
-|-w | --watch | false | Bandera para vigilar los archivos fuente y regenrar los blueprints |[booleano]
-|-t | --template | svelte-blueprint/templates/Blueprint.svelte | Dirección de un template a usar en lugar del default |[cadena de caracteres]  
+
+**Command document**
+
+```bash
+$ ./node_modules/svelte-blueprint/blueprint/target/release/blueprint document -h
+Create svelte documentation files
+
+Usage: blueprint document [OPTIONS] --source <FILE> --destination <Directory>
+
+Options:
+  -s, --source <FILE>            Sets a source path
+  -d, --destination <Directory>  Sets a destination path
+  -t, --template <FILE>          Sets a template for the final component
+  -h, --help                     Print help
+
+```
   
 <br/>
 <br/>
 
 ## Templates
-Por defecto, la herramienta utiliza un template contenido en la biblioteca. 
+By default, the genrated Blueprint file uses a Blueprint Component contained in this library.
 
-Para adaptarlo a tus necesidades puedes sobre escribir las variables css del template default o bien usar un template propio. 
+You can customize the colors of that template or use your own template.
 
-
-Estas son las variables de los colores que puedes sobre escribir.
+These are the variables you may want to override to match your own style.
 
 ```css
  :global(:root) {
@@ -92,7 +108,8 @@ Estas son las variables de los colores que puedes sobre escribir.
 }
 ```
 
-Si necesitas usar tu propio template, estos son los *slots* que debes definir en tu template:
+
+If you need to use your own template this are the svelete *slots* you should define:
 ```html
 <slot name='description' > 
     Component description
@@ -100,18 +117,21 @@ Si necesitas usar tu propio template, estos son los *slots* que debes definir en
 <slot name='props'>
     Component properties
 </slot>
+<slot name='slots'>
+    Component slots
+</slot>
 <slot name='example'>
     Component example
 </slot>
 ```
 
-También tienes disponibles estas props:
+Also you may want to use these props:
 ```js
 title
 code
 ```
 
-Para un mejor entendimiento dale un vistazo al [template por default](./templates/Blueprint.svelte)
+For a better understanding, checkout the [default template](./templates/Blueprint.svelte)
 
-## Guias
-- [Youtube](https://www.youtube.com/watch?v=Z-znFCs7Cuc&t=14s&ab_channel=evesan)
+## Guides
+- [Youtube](https://www.youtube.com/watch?v=Z-znFCs7Cuc&t=14s&ab_channel=evesan) for svelte-blueprint < 2.0.0
