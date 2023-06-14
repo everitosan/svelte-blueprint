@@ -1,9 +1,10 @@
 const ffi = require("ffi-napi")
 const path = require('path')
 
-const library_name = path.resolve(__dirname, './blueprint/target/release/libblueprintlib');
+const libLocation = process.platform === "win32" ? "./blueprint/target/release/blueprintlib" : "./blueprint/target/release/libblueprintlib"
+const libraryName = path.resolve(__dirname, libLocation)
 
-const lib = ffi.Library(library_name, {
+const lib = ffi.Library(libraryName, {
   blueprint: ["string", ["string", "string", "string"]]
 })
 
