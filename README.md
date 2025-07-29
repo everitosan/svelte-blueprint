@@ -12,7 +12,7 @@ _Crea archivos de documentación para tus compomentes en svelte usando solo come
 
 **¿Por qué pasaba esto?**
 
-- Node.js v22 cambió las firmas de las funciones de la API nativa
+- Node.js cambió las firmas de las funciones de la API nativa
 
 - ffi-napi v4.0.3 no está actualizado para estos cambios
 
