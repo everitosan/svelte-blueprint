@@ -1,78 +1,60 @@
 # Svelte blueprint
 
-_Crea archivos de documentación para tus compomentes en svelte usando solo comentarios._
+_Create documentation files for components based in comments in the source code._
 
 ![example1](./img/example.png)
 
-> Notas
+> Notes
 
-- Este paquete puede ser entendido como una biblioteca o un cli, si necesitas integrarlo con un projecto en vite, revisa el plugin complementario [vite-plugin-svelte-blueprint](https://www.npmjs.com/package/vite-plugin-svelte-blueprint)
-- Para la versión 2.0.0 todo el código de `js` se migró a `rust-lang`
-- Este paquete realizo la migración de ffi-napi a koffi, la razon es que **ffi-napi ya no funciona con Node.js versiones superiores a la 21.0.0**, ffi-napi permitía que Node.js llamara funciones de la librería Rust.
+- This package can be understood as a cli/lib tool, if you need to integrate it with a vite project check de complementary plugin [vite-plugin-svelte-blueprint](https://www.npmjs.com/package/vite-plugin-svelte-blueprint)
+- For version 2.0.0 all `js` code has been migrated to `rust-lang`
+- ffi-napi package was migrated from koffi. The reason is that ffi-napi no longer works with Node.js versions above 21.0.0. ffi-napi allowed Node.js to call functions from the Rust library.
 
-**¿Por qué pasaba esto?**
+**Why did this happen?**
 
-- Node.js cambió las firmas de las funciones de la API nativa
+- Node.js changed the signatures of its native API functions
+- ffi-napi v4.0.3 hasn't been updated to accommodate these changes
+- The error occurs during npm install, not when executing the code
 
-- ffi-napi v4.0.3 no está actualizado para estos cambios
+- Link a [documentación en español](./README-es.md)
 
-- El error ocurre durante `npm install`, no al ejecutar el código
+## 📜 Requirements
 
-## 📊 Beneficios Obtenidos de la Migración
-
-### 🚀 Compatibilidad Futura
-
-- **Antes**: Solo Node.js ≤ v16
-
-- **Ahora**: Node.js v16, v18, v20, v22, y futuras versiones
-
-### 🔧 Código Más Robusto
-
-- **Ahora**: Agregamos un try/catch para detectar problemas
-
-### 📦 Mantenimiento
-
-- **Antes**: ffi-napi sin actualizaciones recientes
-
-- **Ahora**: koffi con actualizaciones regulares
-
-## 📜 Requisitos
-
-Debido a que se requiren algunas compilaciones para la instalación de este paquete de npm, deberás tener algunas herramientas en tu sistema.
+As some process and compilation is required for the installation of the npm package, you might need some tools in your system.
 
 ```bash
 $ apt-get install make gcc g++ -y
-$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # installacion de rust
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # rust installation
 ```
 
-## 🛠️ Como usarlo
+## 🛠️ How to use
 
-Para instalar este paquete, usa npm como siempre.
+To install the library, just use npm as always.
 
 ```
 $ npm i -D svelte-blueprint
 ```
 
-Los compnentes de svlelte, deben incluir algunos comentarios para generar documentación más explícita.
+Svelte component files should include comments to generate more explicit documentation.
 
-- Para definir la descripción de un componente, usa un comentario como el siguiente.
+- To add a descripton of the component place a comment like this one.
   ```html
   <!--D Description of the component -->
   ```
-- Para agregar la descripcíon de un `prop`, usa un comentario al lado de la definición.
+- To add a description of a prop just add a single line comment next to it's definition.
 
   ```js
   export let name; // Name string
   ```
 
-- Para agregr un ejemplo de uso, agrega un comentario como el siguiente:
+- To set usage example add:
   ```html
   <!--E
       <Component  />
   -->
   ```
 
-Ahora puedes usar el cli para generar la documentación de un componente indicando el archivo fuente, el directorio destino y un template que es opcional.
+Now you can use the cli to generate a documentation component file indicating source file, destination directory and an optional template to use.
 
 - -s, --source <FILE> Sets a source path
 - -d, --destination <Directory> Sets a destination path
@@ -82,15 +64,15 @@ Ahora puedes usar el cli para generar la documentación de un componente indican
 $ ./node_modules/svelte-blueprint/blueprint/target/release/blueprint document --source ./hello.svelte --destination ./docs
 ```
 
-Recuerda que hay un plug in complemtario [vite-plugin-svelte-blueprint](https://www.npmjs.com/package/vite-plugin-svelte-blueprint) para vite.
+Rememnber there is a complementary plugin [vite-plugin-svelte-blueprint](https://www.npmjs.com/package/vite-plugin-svelte-blueprint) for vite.
 
 ## 🍱 Templates
 
-Por defecto, los archivos de coemuentación generados usan un template definido en este biblioteca.
+By default, the genrated Blueprint file uses a Blueprint Template Component contained in this library.
 
-Aún así, puedes customizar los colores de ese template.
+You can customize the colors of that template or use your own template.
 
-Estas son las variables que podrías sobre esribir para usar tu propia paleta de colores.
+These are the variables you may want to override to match your own style.
 
 ```css
 :global(:root) {
@@ -104,7 +86,7 @@ Estas son las variables que podrías sobre esribir para usar tu propia paleta de
 }
 ```
 
-Si necesitas usa un tempate propio, estos son los `slots` que debes definir:
+If you need to use your own template these are the svelete _slots_ you should define:
 
 ```html
 <slot name="description"> Component description </slot>
@@ -113,15 +95,15 @@ Si necesitas usa un tempate propio, estos son los `slots` que debes definir:
 <slot name="example"> Component example </slot>
 ```
 
-Debes tomar en cuenta estas props también:
+Also you may want to use these props:
 
 ```js
 title;
 code;
 ```
 
-Para un mayor entendimiento de los templates puedes revisar el [default template](./templates/Blueprint.svelte)
+For a better understanding, checkout the [default template](./templates/Blueprint.svelte)
 
-🌄 Guías
+🌄 Guides
 
-- [Youtube](https://www.youtube.com/watch?v=Z-znFCs7Cuc&t=14s&ab_channel=evesan) para svelte-blueprint < 2.0.0
+- [Youtube](https://www.youtube.com/watch?v=Z-znFCs7Cuc&t=14s&ab_channel=evesan) for svelte-blueprint < 2.0.0
